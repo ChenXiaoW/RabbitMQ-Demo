@@ -1,0 +1,27 @@
+
+server:
+  port: 8090
+
+spring:
+  application:
+    name: direct-provider
+  #RabbitMq信息配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    publisher-confirms: true #confirm确认机制，可以确认消息是否已经发送到exchange
+
+#交换机信息配置
+mq:
+  config:
+    exchange: log.direct
+    queue:
+      info:
+        routingkey: info_routing_key  #路由键
+      error:
+        routingkey: error_routing_key
+      msg:
+        routingkey: msg_info

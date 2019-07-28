@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="fanout-consumer" />
+        <module name="direct-consumer" />
+        <module name="topic-consumer" />
+        <module name="ack-provider" />
+        <module name="fanout-provider" />
+        <module name="direct-provider" />
+        <module name="topic-provider" />
+        <module name="ack-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="consumer" target="1.8" />
+      <module name="consumer2" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ack-consumer" options="-parameters" />
+      <module name="ack-provider" options="-parameters" />
+      <module name="direct-consumer" options="-parameters" />
+      <module name="direct-provider" options="-parameters" />
+      <module name="fanout-consumer" options="-parameters" />
+      <module name="fanout-provider" options="-parameters" />
+      <module name="topic-consumer" options="-parameters" />
+      <module name="topic-provider" options="-parameters" />
+    </option>
+  </component>
+</project>

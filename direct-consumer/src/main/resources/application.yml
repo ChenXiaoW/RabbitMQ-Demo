@@ -1,0 +1,39 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: direct-consumer
+  #RabbitMq信息配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    #ACK确认机制
+    listener:
+      simple:
+        retry:
+          enabled: true   #开启重试，默认关闭
+          max-attempts: 5  #重试次数，默认3
+        concurrency: 5  #并发数
+        max-concurrency: 10 #并发数
+        acknowledge-mode: manual  #签收模式 auto：自动签收，manual：手工签收
+        prefetch: 1 #限流  每个消费者发送确认消息之前，消息队列不发送下一个消息到消费者，一次只处理1个消息
+
+
+#交换机信息配置
+mq:
+  config:
+    exchange: log.direct   #交换机名称
+    queue:
+      info:
+        name: log_info               #队列名称
+        routingkey: info_routing_key  #路由键
+      error:
+        name: log_error
+        routingkey: error_routing_key
+      msg:
+        name: msg
+        routingkey: msg_info

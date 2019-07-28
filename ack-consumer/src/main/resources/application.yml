@@ -1,0 +1,32 @@
+server:
+  port: 8899
+
+spring:
+  application:
+    name: ack-consumer
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    connection-timeout: 15s
+    listener:
+      simple:
+        retry:
+          enabled: true #开启重试
+          max-attempts: 5 #重试次数
+        concurrency: 5 #并发数
+        max-concurrency: 10 #最大并发数
+        acknowledge-mode: manual  #手动签收模式
+        prefetch: 2  #限流
+
+
+#交换机信息配置
+mq:
+  config:
+    exchange: shop.ack   #交换机名称
+    queue:
+      shop:
+        name: shop               #队列名称
+        routingkey: shop.routing.key  #路由键

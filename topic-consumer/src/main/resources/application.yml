@@ -1,0 +1,31 @@
+server:
+  port: 8991
+#rabbitmq服务地址
+spring:
+  application:
+    name: topic-consumer
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    #配置虚拟消息服务器
+    virtual-host: logs
+    #rabbitmq连接超时时间
+    connection-timeout: 15s
+
+#交换器信息配置
+mq:
+  config:
+    exchange: log.topic  #交换器名
+    queue:
+      info:
+        name: log_info     #队列名称
+        key: "*.log.info"  #绑定键
+      error:
+        name: log_error
+        key: "*.log.error"
+      logs:
+        name: log_all
+        key: "*.log.*"
+

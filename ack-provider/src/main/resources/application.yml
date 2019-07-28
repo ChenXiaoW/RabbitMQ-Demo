@@ -1,0 +1,31 @@
+server:
+  port: 8877
+
+spring:
+  application:
+    name: ack-provider
+  #RabbitMq信息配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    publisher-confirms: true #confirm确认机制，可以确认消息是否已经发送到exchange
+    publisher-returns: true # 开启returnedMessage回调 Exchange -> Queue
+    # 触发returnedMessage回调必须设置mandatory=true, 否则Exchange没有找到Queue就会丢弃掉消息, 而不会触发回调
+    template:
+      mandatory: true
+
+
+
+
+
+
+#交换机信息配置
+mq:
+  config:
+    exchange: shop.ack   #交换机名称
+    queue:
+      shop:
+        routingkey: shop.routing.key  #路由键

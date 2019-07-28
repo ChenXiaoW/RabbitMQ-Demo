@@ -1,0 +1,17 @@
+此Demo基于SpringBoot实现
+
+Demo1: Direct交换器 - 匹配模式
+direct-consumer - 消息消费者
+direct-provider - 消息生产者
+
+Demo2：Topic交换机 - 模糊匹配模式
+topic-consumer - 消息消费者
+topic-provider - 消息生产者
+
+Demo3：Fanout交换机 - 广播模式
+fanout-consumer - 消息消费者
+fanout-provider - 消息生产者
+
+Demo3：ACK - 消息确认机制
+ack-consumer - 消息消费者
+ack-provider - 消息生产者
